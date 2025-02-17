@@ -138,8 +138,9 @@ export const Compare = observer(() => {
     const wheel = (event: WheelEvent) => {
       const states = stateRef.current();
       let scale = -0.001 * event.deltaY + states.scale;
-      if (scale > 1) {
-        scale = 1;
+
+      if (scale > 20) {
+        scale = 20;
       }
       if (scale < 0.1) {
         scale = 0.1;
@@ -261,6 +262,7 @@ export const Compare = observer(() => {
         </Flex>
       </div>
       <Space className={style.action}>
+        <div>{state.scale.toFixed(1)}X</div>
         <Popover
           content={
             <div className={style.help}>{gstate.locale?.previewHelp}</div>
